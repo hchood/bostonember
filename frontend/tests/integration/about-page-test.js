@@ -3,7 +3,7 @@ import startApp from 'bostonember/tests/helpers/start-app';
 
 var App;
 
-module('Integration - Landing Page', {
+module('Integration - About Page', {
   setup: function() {
     App = startApp();
   },
@@ -12,8 +12,10 @@ module('Integration - Landing Page', {
   }
 });
 
-test('Should welcome me to Boston Ember', function() {
+test('Should navigate to the About page', function() {
   visit('/').then(function() {
-    equal(find('h2#title').text(), 'Welcome to Boston Ember');
+    click("a:contains('About')").then(function() {
+      equal(find('h3').text(), 'About');
+    });
   });
 });
